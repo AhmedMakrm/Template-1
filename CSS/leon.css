@@ -1,0 +1,511 @@
+/*Start Global Variables*/
+:root{
+ /*عشان اللون ده هيتكرر كتير في الموقع*/
+ --main-color: #10cab7; 
+ --secondary-color: #2c4755;
+ --text-color: #777;
+ --section-padding: 60px;
+ --section-background: #f6f6f6;
+ --main-duration: 0.3s;
+}
+
+/*End Global Variables*/
+
+/*Start Global Rules*/
+*{
+ -webkit-box-sizing: border-box;
+ -moz-box-sizing: border-box;
+ box-sizing: border-box;
+}
+/*مهم ومش كل المتصفحات تدعمها*/
+html{
+ scroll-behavior: smooth;
+}
+body{
+ font-family: 'Work Sans', sans-serif;
+ /*min-width: 1400px;*/
+}
+/*present in features,servics and portfolio.*/
+/*<!--.grid-2{
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+} -->*/
+.container{
+ /*background-color: #aaa; 
+ width: 600px; */
+ /* we should delete two above*/
+ 
+ /*margin: auto;*/
+ /*we should replace one above with two below*/
+ margin-right: auto;
+ margin-left: auto;
+ padding-left: 15px;
+ padding-right: 15px;
+ }
+
+/* small */
+@media (min-width: 768px){
+  .container{
+   width: 750px;
+  }
+}
+/*ده عشان انا بشتغل على عرض 980*/
+@media (min-width: 980px){
+  .container{
+   width: 950px;
+  }
+}
+/* medium */
+@media (min-width: 992px){
+  .container{
+   width: 970px;
+  }
+}
+
+/* large */
+@media (min-width: 1200px){
+  .container{
+   width: 1170px;
+  }
+}
+/*End Global Rules*/
+/*start components*/
+/*عشان التنسيقات دي هتتكرر كتير */
+.special-heading{
+ color: #ebeced;
+ font-size: 100px;
+ font-weight: 800; /*extra-bold*/
+ text-align: center;
+ letter-spacing: -3px;
+ margin: 0;
+}
+.special-heading + p{
+ color: #797979;
+ font-size: 20px;
+ text-align: center;
+ margin: -30px 0 0;
+}
+/*عشان نراعي حجم الموبايل*/
+@media (max-width: 767px){
+ .special-heading{
+  font-size: 60px;
+}
+}
+@media (max-width: 767px){
+ .special-heading + p{
+  margin: -20px 0 0;
+}
+}
+/*end components*/
+/*start header*/
+.header{
+ padding: 20px;
+}
+.header .container{
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+.header .logo{
+ width: 60px;
+}
+.header .links{
+  position: relative;
+  /*عشان كل العناصر اللي جوه هعملها position: absolute*/
+}
+.header .links:hover .icon span:nth-child(2){
+  width: 100%;
+}
+.header .links .icon{
+ width: 30px;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: flex-end;
+}
+.header .links .icon span{
+ background-color: #333;
+ margin-bottom: 5px;
+ height: 2px;
+}
+.header .links .icon span:first-child{
+ width: 100%;
+}
+.header .links .icon span:nth-child(2){
+ width: 60%;
+ transition: var(--main-duration);
+}
+.header .links .icon span:last-child{
+ width: 100%;
+}
+.header .links ul{
+ list-style: none;
+ margin: 0;
+ padding: 0;
+ background-color: #f6f6f6;
+ position: absolute; /*الاب اللي هو ال links معموله position: relative*/
+ right: 0; /*عشان متخرجش بره الخلفيه*/
+ min-width: 200px;
+ top: calc(100% + 15px); /*مهو الicon اللي عباره عن 3شرط تقريباً 15px.*/
+ display: none;
+ /*بتعملها بعد ما تظبط كل حاجه*/
+ z-index: 1; /*عشان تيجي فوق العناصر*/
+}
+.header .links ul:before{
+ content: "";
+ border-width: 10px; /*width and height of border is 20px*/
+ border-style: solid;
+ border-color: transparent transparent #f6f6f6 transparent;
+ position: absolute ;
+ right: 5px; /*5L+ 20 width + 5R*/
+ top: -20px; /*height of border*/
+}
+.header .links:hover ul{
+ display: block;
+}
+.header .links ul li a{
+ display: block; /*مهم جداً عشان ال 
+ paddingوباقي الخواص تطبق بشكل صحيح.*/
+ padding: 15px;
+ text-decoration: none;
+ color: #333;
+ transition: var(--main-duration);
+}
+.header .links ul li a:hover{
+ padding-left: 25px;
+}
+.header .links ul li:not(:last-child) a{
+ border-bottom: 1px solid #ddd;
+}
+/* end header */
+/* start landing section */
+.landing{
+ background-image: url("/Template-1/Media/landing.jpeg");
+ background-size: cover;
+ height: calc(100vh - 64px);
+ /* نخصم 64 عشان حجم ال header.*/
+ position: relative;
+ }
+.landing .intro-text{
+ position: absolute; /*لو عاوز التوزيع يبقى في ال landingبس مش في الصفحة كلها وهنا مش هتفرق كتيى يبقى نعمل للlanding position: relative.*/
+ top: 50%;
+ left: 50%;
+ -webkit-transform: translate(-50%, -50%);
+ -moz-transform: translate(-50%, -50%);
+ transform: translate(-50%, -50%);
+ text-align: center;
+ width: 320px; /*عشان منخليش p يتمدد*/
+ max-width: 100; /*عشان النص ميطلعش بره الcontainer or screen.*/
+}
+.landing .intro-text h1{
+ margin: 0;
+ font-size: 50px;
+ font-weight: bold;
+ color: var(--main-color);
+}
+.landing .intro-text p{
+ font-size: 20px;
+ line-height: 1.8;
+}
+/* end landing section */
+/* start features */
+.features{
+ padding-top: var(--section-padding);
+ padding-bottom: var(--section-padding);
+ background-color: var( --section-background);
+}
+.features .container{
+  display: grid; 
+  /*min-width of each column = [980-(40×3"padding" + 2×20"gap")]/3 = 820/3 = 273.3*/
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 20px;
+}
+.features .feat{
+ padding: 20px;
+ text-align: center;
+}
+.features .feat i{
+  color: var(--main-color);
+}
+.features .feat h3{
+  font-weight: 800; /*extra-bold*/
+  margin: 30px 0;
+}
+.features .feat p{
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+/* end features */
+/*start services*/
+.services{
+ padding-top: var(--section-padding);
+ padding-bottom: var(--section-padding);
+}
+/*هنا احنا بنوزع 3 اعمده مش 4 srv
+فعشان كده الصفوف ممكن متكنش قصاد بعض لو المحتوى مش قد بعض فعشان كده الاحلى مكناش عملنا col in html.*/
+.services .services-content{
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+ grid-gap: 30px;
+ margin-top: 80px;
+}
+.services .services-content .srv{
+  display: flex; 
+  /*بيقرب ال font icon from header*/
+  margin-bottom: 40px;
+  
+}
+@media(max-width: 767px){
+.services .services-content .srv{
+  flex-direction: column;
+  text-align: center;
+}
+}
+.services .services-content .srv i{
+ color: var(--main-color);
+ flex-basis: 60px; /*عشان تنفع في ال row and column.*/
+}
+.services .services-content .srv .text{
+  flex: 1; /*عشان ياخذ المساحه المتبقيه من ال srv بعد ال 60 بتوع ال icon.*/
+}
+.services .services-content .srv .text h3{
+  margin: 0 0 20px; /*عشان ال h3 يجي جنب ال icon.*/
+}
+.services .services-content .srv .text p{
+  color: var(--text-color);
+  font-weight: 300;
+  line-height: 1.6;
+}
+.services .services-content .image{
+ position: relative;
+ /*عشان هنعمل حاجه بالbefore وهنديها position: absolute*/
+ text-align: center;
+}
+.services .services-content .image:before {
+ content: "";
+ background-color: var(--secondary-color);
+ width: 100px;
+ height: calc(100% + 100px);
+ position: absolute;
+ top: -50px; /*1/2 of 100px above*/
+ right: 0px;
+ z-index: -1;
+}
+.services .services-content .image img{
+  /*عشان متلعبش في أبعاد الصور هات صوره مناسبه للحجم الذي تريده وظبط الصوره عن طريق الطول او العرض فقط.*/
+width: 260px;
+position: relative;/*متعملش position absoluteهنا عشان هيبوظ طول العمود اللي جنبها ليه مش عارف.*/
+right: 30px;
+}
+@media(max-width: 1199px){
+ .services .services-content .image img image-col{
+ display: none
+}
+}
+/*end services*/
+/*start portfolio*/
+.portfolio{
+ padding-top: var(--section-padding);
+ padding-bottom: var(--section-padding);
+ background-color: var( --section-background);
+}
+.portfolio .portfolio-content{
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+ grid-gap: 30px;
+ margin-top: 80px;
+}
+.portfolio .portfolio-content .card{
+ background-color: white;
+}
+.portfolio .portfolio-content .card img{
+ max-width: 100%; /*عشان متطلعش بره ال card الخاصة بها*/
+ /*مظبطهم على اصغر صوره*/
+ height: 180px;
+ width: 291px;
+}
+.portfolio .portfolio-content .card .info{
+ padding: 20px;
+}
+.portfolio .portfolio-content .card .info h3{
+ margin: 0;
+}
+.portfolio .portfolio-content .card .info p{
+ color: var(--text-color);
+ line-height: 1.8;
+ margin-bottom: 0; /*عشان المسافة اللي فوق البرجراف واللي تحته يتساو.*/
+}
+/*end portfolio*/
+/*start about*/
+.about{
+ padding-top: var(--section-padding);
+ /*عشان نعمل براح للصوره*/
+ padding-bottom: calc(var(--section-padding) + 60px);
+
+ /*background-color: red;*/
+}
+.about .about-content{
+ /*background-color: green;*/
+ display: flex;
+ /*وممكن نعملها بال grid كمان بس عملناها بال flex للتنويع بس.*/
+ flex-wrap: wrap;
+ justify-content: space-between;
+ margin-top: 80px;
+}
+.about .about-content .image{
+ width: 250px; /*احنا اللي عاوزينه كدا عشان تكون على قد عرض الصوره*/
+ height: 375px; /*تم تحديده تلقائيا*/
+ position: relative; /*عشان هنعمل حاجات للصوره بال before and afterوهنحتاج ال position: absolute.*/
+}
+.about .about-content .image:before{
+ content: "";
+ background-color: #ebeced;
+ /*نفس لون ال special-heading */
+ width: 100px;
+ height: calc(100% + 80px);
+ position: absolute;
+ top: -40px;
+ left: -20px ;
+ z-index: -1;
+}
+.about .about-content .image:after{
+ content: "";
+  /*طريقه لعمل حرف ال L*/
+ /*background-color: var(--main-color);*/ /*يتم حذفها بعد التعديل*/
+ position: absolute;
+ width: 120px;
+ height: 300px;
+ border-bottom: 80px solid var(--main-color);
+ border-left: 80px solid var(--main-color);
+ top: -40px; /*زي العمود التاني */
+ right: -150px; /*مهم جداً*/
+ z-index: -1;
+}
+.about .about-content .image img{
+  max-width: 100%;
+}
+.about .about-content .text{
+ flex-basis: calc(100% - 420px);
+ /*يعني الصورة تاخد 420 والباقي للنص*/
+ 
+ /*Another way*/
+ /*<!-- flex: 1;
+ padding-left: 150px; -->*/
+ 
+}
+.about .about-content .text p:first-of-type{
+  font-weight: bold;
+  line-height: 2;
+  margin-bottom: 50px;
+}
+.about .about-content .text hr{
+  width: 50%;
+  display: inline-block; 
+  /*عشان الخط يجي من اول السطر مش النص*/
+  border-color: var(--main-color); 
+  /* تقول border-color مش color مهم*/
+}
+.about .about-content .text p:last-of-type{
+  color: var(--text-color);
+  line-height: 2;
+}
+/*things related to responsive in small"992" and mobile "768" screen.
+we should put this in it's place in the order. and we replace 991 with 971 because width of screen 980 and not respond to responsive and device emulator.
+*/
+@media(max-width: 971px){
+  .about .about-content{
+   flex-direction: column;
+   text-align: center;
+  }
+}
+/*<!-- 
+@media(max-width: 971px){
+  .about .about-content .image:before,
+  . about .about-content .image:after{
+   display: none;
+  }
+} -->*/
+
+@media(max-width: 971px){
+  .about .about-content .image{
+   margin: 0 auto 60px;
+  }
+}
+/*end about*/
+
+/*start contact*/
+.contact{
+ padding-top: var(--section-padding);
+ padding-bottom: var(--section-padding);
+ background-color: var( --section-background);
+}
+.contact .contact-content{
+  /*المقصود تعمل هامش بقيمة 60*/
+ padding-top: var(--section-padding);
+ padding-bottom: var(--section-padding);
+ /*margin-top: 80px;*/
+ text-align: center;
+}
+.contact .contact-content .label{
+ font-size: 40px;
+ font-weight: 800;
+ color: var(--secondary-color);
+ letter-spacing: -1px;
+ margin-bottom: 15px;
+ /*عشان الكلام ميبعدش عن بعضه عشان هي اكبر من كدا في الأساس.*/
+}
+.contact .contact-content .link{
+ display: block;  /*مهم جداً*/
+ font-size: 40px;
+ font-weight: 800;
+ color: var(--main-color);
+ text-decoration: none;
+}
+.contact .contact-content .social{
+ display: flex; /* عشان ال icon لو مش جنب الكلام تيجي جنبه*/
+ justify-content: center; /*مهم جداً*/
+ margin-top: 20px;
+ font-size: 16px;
+}
+.contact .contact-content .social i{
+ margin-left: 10px;
+ color: var(--secondary-color);
+}
+@media(max-width: 767px){
+ .contact .contact-content .label,
+ .contact .contact-content .link{
+   font-size: 25px;
+ }
+}
+.top {
+  margin: 30px auto;
+  background-color: var(--secondary-color);
+  padding: 10px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 7px;
+}
+.top:hover{
+  background-color: var(--main-color);
+  border: 2px solid var(--main-color);
+}
+.top a{
+  text-decoration: none;
+  color: white;
+}
+
+/*end contact*/
+
+/*start footer*/
+.footer{
+ background-color: var(--secondary-color);
+ color: white;
+ padding: 30px 10px; /*مهم جداً*/
+ text-align: center;
+ font-size: 18px;
+}
+.footer span{
+ color: var(--main-color);
+ font-weight: bold;
+}
+/*end footer*/
+
